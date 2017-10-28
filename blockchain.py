@@ -10,15 +10,15 @@ class Blockchain(object):
     def __init__(self):
         self.chain = []
         self.current_transaction = []
-        self.new_block(previus_hash=1, proof=100)
+        self.new_block(previous_hash=1, proof=100)
 
-    def new_block(self, proof, previus_hash=None):
+    def new_block(self, proof, previous_hash=None):
         block = {
             'index': len(self.chain) + 1,
             'timestamp': time(),
             'transactions': self.current_transaction,
             'proof': proof,
-            'previus_hash': previus_hash or self.hash(self.chain[-1])
+            'previous_hash': previous_hash or self.hash(self.chain[-1])
         }
 
         self.current_transaction = []
@@ -51,12 +51,12 @@ class Blockchain(object):
 
     @staticmethod
     def hash(block):
-        block_string = json.dump(block, sort_keys=True).encode()
+        block_string = json.dumps(block, sort_keys=True).encode()
         return hashlib.sha256(block_string).hexdigest()
 
     @property
     def last_block(self):
-        pass
+        return self.chain[-1]
 
 
 app = Flask(__name__)
