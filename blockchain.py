@@ -94,7 +94,7 @@ def mine():
     return jsonify(response), 200
 
 
-@app.route('/tranasctions/new', methods=['POST'])
+@app.route('/transactions/new', methods=['POST'])
 def new_transaction():
     values = request.get_json()
 
