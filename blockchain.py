@@ -1,7 +1,9 @@
 import hashlib
 import json
 from time import time
+from uuid import uuid4
 
+from flask import Flask
 
 class Blockchain(object):
     def __init__(self):
@@ -55,3 +57,9 @@ class Blockchain(object):
     def last_block(self):
         pass
 
+
+app = Flask(__name__)
+
+node_uuid = str(uuid4()).replace('-', '')
+
+blockchain = Blockchain()
