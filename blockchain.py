@@ -98,11 +98,11 @@ def mine():
 def new_transaction():
     values = request.get_json()
 
-    required = ['sender', 'recepient', 'amount']
+    required = ['sender', 'recipient', 'amount']
     if not all(k in values for k in required):
         return 'Missing values', 400
 
-    index = blockchain.new_transaction(values['sender'], values['recepient'], values['amount'])
+    index = blockchain.new_transaction(values['sender'], values['recipient'], values['amount'])
 
     response = {'message': f'Transaction will be added to Block {index}'}
     return jsonify(response), 201
