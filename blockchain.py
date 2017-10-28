@@ -37,7 +37,7 @@ class Blockchain(object):
         return self.last_block['index'] + 1
 
     def proof_of_work(self, last_proof):
-        proof= 0
+        proof = 0
         while self.valid_proof(last_proof, proof) is False:
             proof += 1
 
@@ -71,7 +71,7 @@ def mine():
     # We mine.
     last_block = blockchain.last_block
     last_proof = last_block['proof']
-    proof = blockchain.proof_of_work(last_block)
+    proof = blockchain.proof_of_work(last_proof)
 
     # Reward for mining.
     blockchain.new_transaction(
