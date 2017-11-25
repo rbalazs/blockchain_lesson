@@ -39,7 +39,7 @@ class Blockchain(object):
 
     @property
     def last_block(self):
-        pass
+        return self.chain[-1]
 
     def proof_of_work(self, last_proof):
         proof = 0
